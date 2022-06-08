@@ -1,7 +1,16 @@
+<!DOCTYPE html>
 <html>
-<ul>
-    <li>Мастер на час</li>
-    <li>Выведение из запоя</li>
-    <li>Услуги экскаватора-погрузчика, гидромолота, ямобура</li>
-</ul>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+    <ul>
+        {% for adv in advertisements%}
+            <li>{{adv}}</li>
+        {% endfor %}
+    </ul>
+    <p>How many requests - {{count}}</p>
+</body>
 </html>

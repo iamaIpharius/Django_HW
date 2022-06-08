@@ -1,21 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-
-
-def advertisement_list(request, *args, **kwargs):
-    advertisements = [
-        'Мастер на час',
-        'Выведение из запоя',
-        'Услуги экскаватора-погрузчика, гидромолота, ямобура'
-    ]
-    advertisements_1 = [
-        'Мастер на час',
-        'Выведение из запоя',
-        'Услуги экскаватора-погрузчика, гидромолота, ямобура'
-    ]
-    return render(request, 'advertisements/advertisement_list.html',
-                  {'advertisements': advertisements,
-                   'advertisements_1': advertisements_1})
+from django.views import View
 
 
 class Contacts(TemplateView):
@@ -50,3 +35,38 @@ Nunc auctor lectus in nisi venenatis, id dictum est volutpat. Phasellus suscipit
 
         """
         return context
+
+
+class Advertisements(TemplateView):
+    template_name = "advertisements/advertisement_list.html"
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['advertisements'] = [
+            'Мастер на час',
+            'Выведение из запоя',
+            'Услуги экскаватора-погрузчика, гидромолота, ямобура',
+            'Best practices for begginers',
+            'You have won 1000 dollars!'
+        ]
+        context['count'] = 0
+        return context
+
+    def post(self, request):
+        req_new = 'запрос на создание новой записи успешно выполнен.'
+
+        return render(request, 'advertisements/advertisement_list.html', {'req_new': req_new})
+
+
+class Main(View):
+
+    def get(self, request):
+        cathegory = ['work', 'study', 'trade', 'home', 'games']
+        regions = ['moscow', 'st.petersburg',
+                   'pskov', 'novgorod', 'kaluga', 'ryazan']
+        field = 'Here you can search ads!'
+        button = 'Search'
+
+        return render(request, 'mainpage/main.html',
+                      {'cathegory': cathegory, 'regions': regions, 'button': button, 'field': field})
