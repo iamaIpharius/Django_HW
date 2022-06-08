@@ -3,7 +3,7 @@ import datetime
 from loguru import logger
 from pathlib import Path
 
-log_path = Path('03_RequestsHandlingInDjango','board', 'logs', 'log.log')
+log_path = Path('logs', 'log.log')
 logger.add(log_path, format="{time} {level} {message}", level="INFO")
 
 
