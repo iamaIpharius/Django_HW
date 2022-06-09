@@ -56,7 +56,7 @@ class Advertisements(TemplateView):
     def post(self, request):
         req_new = 'запрос на создание новой записи успешно выполнен.'
 
-        return render(request, 'advertisements/advertisement_list.html', {'req_new': req_new})
+        return render(request, 'advertisements/success.html', {'req_new': req_new})
 
 
 class Main(View):
