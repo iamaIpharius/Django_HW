@@ -39,9 +39,10 @@ Nunc auctor lectus in nisi venenatis, id dictum est volutpat. Phasellus suscipit
 
 class Advertisements(TemplateView):
     template_name = "advertisements/advertisement_list.html"
+    count = 0
 
     def get_context_data(self, **kwargs):
-
+        Advertisements.count += 1
         context = super().get_context_data(**kwargs)
         context['advertisements'] = [
             'Мастер на час',
@@ -50,10 +51,11 @@ class Advertisements(TemplateView):
             'Best practices for begginers',
             'You have won 1000 dollars!'
         ]
-        context['count'] = 0
+        context['count'] = Advertisements.count
         return context
 
     def post(self, request):
+        Advertisements.count += 1
         req_new = 'запрос на создание новой записи успешно выполнен.'
 
         return render(request, 'advertisements/success.html', {'req_new': req_new})
