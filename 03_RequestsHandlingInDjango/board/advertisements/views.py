@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views import View
+from advertisements.models import Advertisement
 
 
 class Contacts(TemplateView):
@@ -36,29 +37,18 @@ Nunc auctor lectus in nisi venenatis, id dictum est volutpat. Phasellus suscipit
         """
         return context
 
+def advertisements_list(request, *args, **kwargs):
+    advertisements = Advertisement.objects.all()
+    return render(request, 'advertisements/advertisement_list.html', {
+        'advertisements': advertisements
+    })
 
-class Advertisements(TemplateView):
-    template_name = "advertisements/advertisement_list.html"
-    count = 0
 
-    def get_context_data(self, **kwargs):
-        Advertisements.count += 1
-        context = super().get_context_data(**kwargs)
-        context['advertisements'] = [
-            'Мастер на час',
-            'Выведение из запоя',
-            'Услуги экскаватора-погрузчика, гидромолота, ямобура',
-            'Best practices for begginers',
-            'You have won 1000 dollars!'
-        ]
-        context['count'] = Advertisements.count
-        return context
-
-    def post(self, request):
-        Advertisements.count += 1
-        req_new = 'запрос на создание новой записи успешно выполнен.'
-
-        return render(request, 'advertisements/success.html', {'req_new': req_new})
+# class Advertisements():
+#     advertisements = Advertisement.objects.all()
+#     return render(request, 'advertisements/advertisements_list.html', {
+#         'advertisements': advertisements
+#     })
 
 
 class Main(View):

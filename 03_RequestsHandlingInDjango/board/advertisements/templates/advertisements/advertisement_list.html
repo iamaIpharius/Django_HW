@@ -6,11 +6,20 @@
     <title></title>
 </head>
 <body>
+    <h1>Объявления</h1>
+
+    {% if advertisements %}
     <ul>
-        {% for adv in advertisements%}
-            <li>{{adv}}</li>
+        {% for adv in advertisements %}
+        <li>
+            {{ adv.title}} (Цена: {{adv.price}} руб.)
+            <p>Дата создания {{adv.created_at}}</p>
+            <p>Количество просмотров {{adv.views_count}}</p>
+        </li>
         {% endfor %}
     </ul>
-    <p>How many requests - {{count}}</p>
+    {% else %}
+        <p>Объявлений нет</p>
+    {% endif %}
 </body>
 </html>
