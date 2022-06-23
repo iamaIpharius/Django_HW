@@ -24,6 +24,9 @@ class Advertisement(models.Model):
 class AdvertisementStatus(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class AdvertisementAuthor(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
@@ -31,4 +34,4 @@ class AdvertisementAuthor(models.Model):
     phone = models.IntegerField(max_length=100, verbose_name='Номер телефона')
 
 class AdvertisementCategory(models.Model):
-    pass
+    name = models.CharField(max_length=100, verbose_name='Наименование')
