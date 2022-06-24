@@ -15,10 +15,15 @@ class Advertisement(models.Model):
     author = models.ForeignKey('AdvertisementAuthor', default=None, null=True, on_delete=models.CASCADE,
                                related_name='advertisements',
                                verbose_name='Автор')
+    category = models.ForeignKey('AdvertisementCategory', default=None, null=True,
+                                  on_delete=models.CASCADE, related_name='advertisements', verbose_name='Категория')
 
     class Meta:
         db_table = 'advertisements'
         ordering = ['title']
+        
+    def __str__(self):
+        return self.title
 
 
 class AdvertisementStatus(models.Model):
@@ -33,5 +38,12 @@ class AdvertisementAuthor(models.Model):
     email = models.EmailField(max_length=100, verbose_name='Почта')
     phone = models.IntegerField(max_length=100, verbose_name='Номер телефона')
 
+    def __str__(self):
+        return self.name
+
+
 class AdvertisementCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
+
+    def __str__(self):
+        return self.name
