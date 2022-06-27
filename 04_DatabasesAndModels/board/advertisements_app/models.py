@@ -47,3 +47,10 @@ class AdvertisementCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class AdvertisementForm(models.Model):
+    title = models.CharField(max_length=20)
+    description = models.TextField()
+    price = models.FloatField()
