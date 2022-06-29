@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>NEWS</title>
+</head>
+<body>
+	<h1>Сегодня в мире</h1>
+
+	{% if news_list %}
+	<ul>
+		{% for news in news_list %}
+		<li>
+			<a href="/news/{{news.id}}">{{news.title}}</a>
+			<p>{{adv.updated_at}}</p>
+		</li>
+		{%endfor%}
+	</ul>
+	{%else%}
+		<p>Новостей нет</p>
+	{%endif%}
+</body>
+</html>
