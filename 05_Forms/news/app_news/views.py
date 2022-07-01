@@ -2,24 +2,45 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views import View
 from app_news.models import News, Commentary
-from app_news.forms import NewsForm
+from app_news.forms import NewsForm, CommentaryForm
 from django.http import HttpResponseRedirect
+
 
 class NewsListView(ListView):
     model = News
     template_name = "news_list.html"
     context_object_name = 'news_list'
-    queryset = News.objects.all()[:5]
+    queryset = News.objects.all()
 
-
-class NewsDetailView(DetailView):
-    model = News
-    context_object_name = 'news_detail'
-
-class CommentaryView(View):
-    def get(self, request):
+class NewsDetailView(View):
+    def get(self, request, news_id):
+        news = News.objects.get(id=news_id)
+        template_name = "app_news/news_detail.html"
+        comments = news.commentary_set.all()
+        new_commentary = None
         commentary_form = CommentaryForm()
-        return render(request, 'app_news/news_detail.html', context={'commentary_form': commentary_form})
+        return render(request, template_name, context={'news': news,
+                                                       'comments': comments,
+                                                       'new_commentary': new_commentary,
+                                                       'commentary_form': commentary_form,
+                                                       'news_id': news_id})
+
+    def post(self, request, news_id):
+        news = News.objects.get(id=news_id)
+        template_name = "app_news/news_detail.html"
+        comments = news.commentary_set.all()
+        new_commentary = None
+        commentary_form = CommentaryForm(request.POST)
+
+        if commentary_form.is_valid():
+            Commentary.objects.create(**commentary_form.cleaned_data)
+            return HttpResponseRedirect(f'/news/{news_id}')
+
+        return render(request, template_name, context={'news': news,
+                                                       'comments': comments,
+                                                       'new_commentary': new_commentary,
+                                                       'commentary_form': commentary_form,
+                                                       'news_id': news_id})
 
 
 class NewsFormView(View):

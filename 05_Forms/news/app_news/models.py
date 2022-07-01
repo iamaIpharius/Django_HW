@@ -18,5 +18,8 @@ class News(models.Model):
 class Commentary(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     text = models.TextField(max_length=1000, verbose_name='Текст комментария')
+    created_at = models.DateTimeField(auto_now_add=True)
     related_news = models.ForeignKey('News', default=None, null=True, on_delete=models.CASCADE,
-                                     verbose_name='Статус')
+                                     verbose_name='Новость')
+    class Meta:
+        ordering = ['created_at']
