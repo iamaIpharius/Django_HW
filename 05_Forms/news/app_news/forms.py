@@ -7,7 +7,6 @@ class NewsForm(forms.ModelForm):
         model = News
         fields = '__all__'
 
-class CommentaryForm(forms.ModelForm):
-    class Meta:
-        model = Commentary
-        fields = '__all__'
+class CommentaryForm(forms.Form):
+    name = forms.CharField()
+    text = forms.CharField()

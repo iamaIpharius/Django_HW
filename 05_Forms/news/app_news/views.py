@@ -33,7 +33,7 @@ class NewsDetailView(View):
         commentary_form = CommentaryForm(request.POST)
 
         if commentary_form.is_valid():
-            Commentary.objects.create(**commentary_form.cleaned_data)
+            Commentary.objects.create(related_news=news, **commentary_form.cleaned_data)
             return HttpResponseRedirect(f'/news/{news_id}')
 
         return render(request, template_name, context={'news': news,
