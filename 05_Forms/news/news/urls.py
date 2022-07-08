@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from app_news.views import NewsFormView
+from news.views import MainView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app_news.urls')),
+    path('news/', include('app_news.urls')),
+    path('login/', include('app_login.urls')),
+    path('', MainView.as_view())
     
 ]
