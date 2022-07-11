@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views import View
 from app_news.models import News, Commentary
-from app_news.forms import NewsForm, CommentaryForm
+from app_news.forms import NewsForm, CommentaryForm, CommentaryAuthForm
 from django.http import HttpResponseRedirect
 
 
@@ -30,11 +30,19 @@ class NewsDetailView(View):
         template_name = "app_news/news_detail.html"
         comments = news.commentary_set.all()
         new_commentary = None
-        commentary_form = CommentaryForm(request.POST)
+        
+        if request.user.is_authenticated:
+            commentary_form = CommentaryAuthForm(request.POST)
+            if commentary_form.is_valid():
+                Commentary.objects.create(related_news=news, name=request.user, user=request.user, **commentary_form.cleaned_data)
+                return HttpResponseRedirect(f'/news/{news_id}')
 
-        if commentary_form.is_valid():
-            Commentary.objects.create(related_news=news, **commentary_form.cleaned_data)
-            return HttpResponseRedirect(f'/news/{news_id}')
+
+        else:
+            commentary_form = CommentaryForm(request.POST)
+            if commentary_form.is_valid():
+                Commentary.objects.create(related_news=news, **commentary_form.cleaned_data)
+                return HttpResponseRedirect(f'/news/{news_id}')
 
         return render(request, template_name, context={'news': news,
                                                        'comments': comments,

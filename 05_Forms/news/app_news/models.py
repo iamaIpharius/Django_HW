@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class News(models.Model):
     STATUS_CHOICES = [
@@ -26,6 +26,8 @@ class Commentary(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     related_news = models.ForeignKey('News', default=None, null=True, on_delete=models.CASCADE,
                                      verbose_name='Новость')
+    user = models.ForeignKey(User, default=None, null=True, on_delete=models.CASCADE,
+                                     verbose_name='Пользователь')
     class Meta:
         ordering = ['created_at']
 

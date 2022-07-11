@@ -10,3 +10,6 @@ class NewsForm(forms.ModelForm):
 class CommentaryForm(forms.Form):
     name = forms.CharField()
     text = forms.CharField()
+
+class CommentaryAuthForm(forms.Form):
+    text = forms.CharField()
