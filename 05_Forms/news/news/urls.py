@@ -21,7 +21,7 @@ from news.views import MainView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('news/', include('app_news.urls')),
-    path('login/', include('app_login.urls')),
+    path('users/', include('app_login.urls')),
     path('', MainView.as_view())
     
 ]

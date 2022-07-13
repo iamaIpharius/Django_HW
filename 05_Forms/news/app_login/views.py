@@ -1,15 +1,41 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views import View
-from app_login.forms import LoginForm, LogoutForm
+from app_login.forms import LoginForm, LogoutForm, ExtendedRegisterForm
 from django.contrib.auth import logout
+
 # Create your views here.
 
 
 class LoginView(LoginView):
-	template_name = "app_login/login.html"
+    template_name = "app_login/login.html"
 
 
 class LogoutView(LogoutView):
-	template_name = 'app_login/logout.html'
+    template_name = 'app_login/logout.html'
 
+
+def register_view(request):
+
+    if request.method == 'POST':
+        form = ExtendedRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=raw_password)
+            login(request.user)
+            return redirect('/')
+    else:
+        form = ExtendedRegisterForm()
+    return render(request, 'app_login/register.html', {'form': form})
+
+
+def account_view(request):
+    if request.user.is_authenticated:
+        usermane = request.user.username
+        first_name = request.user.first_name
+        return render(request, 'app_login/account.html', {'username': usermane, 'first_name': first_name})
+    else:
+        answer = 'Вы не авторизованы'
+        return render(request, 'app_login/account.html', {'answer': answer})
