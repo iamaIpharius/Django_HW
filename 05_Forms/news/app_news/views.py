@@ -35,6 +35,7 @@ class NewsDetailView(View):
             commentary_form = CommentaryAuthForm(request.POST)
             if commentary_form.is_valid():
                 Commentary.objects.create(related_news=news, name=request.user, user=request.user, **commentary_form.cleaned_data)
+                request.user.news_published += 1
                 return HttpResponseRedirect(f'/news/{news_id}')
 
 

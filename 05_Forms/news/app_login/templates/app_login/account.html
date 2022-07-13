@@ -8,9 +8,14 @@
 <body>
 	<h2>Аккаунт</h2>
 	{% if request.user.is_authenticated %}
-		<p>{{username}}</p>
-		<p>{{first_name}}</p>
-
+		<p>Юзернейм: {{username}}</p>
+		<p>Имя: {{first_name }} {{last_name}}</p>
+		<p>Новостей опубликовано: {{news_published}}</p>
+		{% if verification %}
+			<p>Подтвержденный пользователь</p>
+		{%else%}
+			<p>Неподтвержденный пользователь</p>
+		{%endif%}
 	{% else %}
 		<p>{{answer}}</p>
 	{%endif%}
