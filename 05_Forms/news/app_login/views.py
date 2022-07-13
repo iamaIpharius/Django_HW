@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views import View
-from app_login.forms import LoginForm, LogoutForm, ExtendedRegisterForm
+from app_login.forms import LoginForm, LogoutForm, RegisterForm
+from app_login.models import Profile
 from django.contrib.auth import logout
 
 # Create your views here.
@@ -18,16 +19,20 @@ class LogoutView(LogoutView):
 def register_view(request):
 
     if request.method == 'POST':
-        form = ExtendedRegisterForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            date_of_birth = form.cleaned_data.get('date_of_birth')
+            city = form.cleaned_data.get('city')
+            Profile.objects.create(user=user, city=city,
+                                   date_of_birth=date_of_birth)
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=raw_password)
             login(request.user)
             return redirect('/')
     else:
-        form = ExtendedRegisterForm()
+        form = RegisterForm()
     return render(request, 'app_login/register.html', {'form': form})
 
 
