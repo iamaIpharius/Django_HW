@@ -9,11 +9,10 @@ from django_filters.views import FilterView
 from app_news.filtersets import NewsFilter
 
 
-class NewsListView(ListView):
+class NewsListView(FilterView):
     model = News
-    template_name = "news_list.html"
+    template_name = "app_news/news_list.html"
     context_object_name = 'news_list'
-    queryset = News.objects.all()
 
 
 class NewsDetailView(View):
