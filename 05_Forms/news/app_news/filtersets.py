@@ -5,4 +5,4 @@ from app_news.models import News
 class NewsFilter(django_filters.FilterSet):
     class Meta:
         model = News
-        fields = ['tag']
+        fields = ['tag', 'created_at']

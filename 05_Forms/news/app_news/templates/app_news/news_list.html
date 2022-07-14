@@ -7,6 +7,13 @@
 </head>
 <body>
 	<h1>Сегодня в мире</h1>
+	{%block content%}
+		<form action="" method="get">
+			{{filter.form.tag}}
+			{{filter.form.created_at}}
+			<input type="submit" name="">
+		</form>
+	{%endblock%}
 
 	{% if news_list %}
 	<ul>
