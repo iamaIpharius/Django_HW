@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_news.models import News, Commentary
+from app_news.models import News, Commentary, Tag
 
 
 class CommentaryInLine(admin.TabularInline):
@@ -36,5 +36,15 @@ class CommentaryAdmin(admin.ModelAdmin):
 
     delete_comment.short_description = 'Удалить комментарий'
 
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(Commentary, CommentaryAdmin)
+admin.site.register(Tag, TagAdmin)
+

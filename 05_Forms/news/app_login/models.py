@@ -10,3 +10,8 @@ class Profile(models.Model):
     date_of_birth = models.DateField(null=True, blank=True)
     news_published = models.IntegerField(null=True, blank=True)
     verification = models.BooleanField(null=True, default=False)
+
+    class Meta:
+        permissions = (
+            ('can_verify', 'Может верифицировать'),
+        )

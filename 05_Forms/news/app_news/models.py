@@ -11,9 +11,12 @@ class News(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     active = models.BooleanField(choices=STATUS_CHOICES, default=False)
+    tag = models.ForeignKey('Tag', default=None, null=True, on_delete=models.CASCADE,
+                                     verbose_name='Тэг')
 
     class Meta:
         ordering = ['created_at']
+        permissions = (('can_approve', 'Одобрение новости'),)
 
     def __str__(self):
         return f'{self.title}, {self.created_at}, {self.active}'
@@ -33,3 +36,10 @@ class Commentary(models.Model):
 
     def __str__(self):
         return f'{self.name}, {self.created_at}, {self.text[:15]}'
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=36, verbose_name='Тэг')
+
+    def __str__(self):
+        return f'{self.name}'
