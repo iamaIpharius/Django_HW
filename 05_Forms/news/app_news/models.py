@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class News(models.Model):
     STATUS_CHOICES = [
         (True, 'Active'),
@@ -12,7 +13,7 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     active = models.BooleanField(choices=STATUS_CHOICES, default=False)
     tag = models.ForeignKey('Tag', default=None, null=True, on_delete=models.CASCADE,
-                                     verbose_name='Тэг')
+                            verbose_name='Тэг')
 
     class Meta:
         ordering = ['created_at']
@@ -25,12 +26,14 @@ class News(models.Model):
 class Commentary(models.Model):
     DELETE_CHOICE = [('delete', 'Удалено администратором')]
     name = models.CharField(max_length=100, verbose_name='Имя')
-    text = models.TextField(max_length=1000, verbose_name='Текст комментария', choices=DELETE_CHOICE)
+    text = models.TextField(
+        max_length=1000, verbose_name='Текст комментария', choices=DELETE_CHOICE)
     created_at = models.DateTimeField(auto_now_add=True)
     related_news = models.ForeignKey('News', default=None, null=True, on_delete=models.CASCADE,
                                      verbose_name='Новость')
     user = models.ForeignKey(User, default=None, null=True, on_delete=models.CASCADE,
-                                     verbose_name='Пользователь')
+                             verbose_name='Пользователь')
+
     class Meta:
         ordering = ['created_at']
 

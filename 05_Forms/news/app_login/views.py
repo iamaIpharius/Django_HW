@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views import View
 from app_login.forms import LoginForm, LogoutForm, RegisterForm
 from app_login.models import Profile
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login, authenticate
 
 # Create your views here.
 
@@ -25,9 +25,14 @@ def register_view(request):
             date_of_birth = form.cleaned_data.get('date_of_birth')
             city = form.cleaned_data.get('city')
             Profile.objects.create(user=user, city=city,
-                                   date_of_birth=date_of_birth, news_published=0, verification=False)
+                                   date_of_birth=date_of_birth,
+                                   news_published=0,
+                                   verification=False)
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username,
+                                password=raw_password)
+            login(request, user)
             return redirect('/')
     else:
         form = RegisterForm()

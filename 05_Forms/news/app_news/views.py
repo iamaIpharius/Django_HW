@@ -22,11 +22,13 @@ class NewsDetailView(View):
         comments = news.commentary_set.all()
         new_commentary = None
         commentary_form = CommentaryForm()
-        return render(request, template_name, context={'news': news,
-                                                       'comments': comments,
-                                                       'new_commentary': new_commentary,
-                                                       'commentary_form': commentary_form,
-                                                       'news_id': news_id})
+        return render(request,
+                      template_name,
+                      context={'news': news,
+                               'comments': comments,
+                               'new_commentary': new_commentary,
+                               'commentary_form': commentary_form,
+                               'news_id': news_id})
 
     def post(self, request, news_id):
         news = News.objects.get(id=news_id)
@@ -63,7 +65,6 @@ class NewsFormView(View):
             raise PermissionDenied()
         news_form = NewsForm()
         return render(request, 'app_news/create.html', context={'news_form': news_form})
-            
 
     def post(self, request):
 
@@ -82,7 +83,6 @@ class NewsEditFormView(View):
         news = News.objects.get(id=news_id)
         news_form = NewsForm(instance=news)
         return render(request, 'app_news/edit.html', context={'news_form': news_form, 'news_id': news_id})
-            
 
     def post(self, request, news_id):
         news = News.objects.get(id=news_id)
