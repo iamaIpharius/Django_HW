@@ -10,6 +10,7 @@ class News(models.Model):
     title = models.CharField(max_length=1500, verbose_name='Название')
     content = models.TextField(verbose_name='Содержание')
     created_at = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     active = models.BooleanField(choices=STATUS_CHOICES, default=False)
     tag = models.ForeignKey('Tag', default=None, null=True, on_delete=models.CASCADE,

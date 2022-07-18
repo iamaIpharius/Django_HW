@@ -10,9 +10,10 @@
 	{%block content%}
 		<form action="" method="get">
 			{{filter.form.tag}}
-			{{filter.form.created_at}}
+			{{filter.form.date}}
 			<input type="submit" name="">
 		</form>
+
 	{%endblock%}
 
 	{% if news_list %}
@@ -20,7 +21,6 @@
 		{% for news in news_list %}
 		<li>
 			<a href="/news/{{news.id}}">{{news.title}}</a>
-			<p>{{adv.updated_at}}</p>
 		</li>
 		{%endfor%}
 	</ul>
