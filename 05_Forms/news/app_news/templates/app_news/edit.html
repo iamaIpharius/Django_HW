@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>редактирование</title>
+</head>
+<body>
+	<h2>редактирование</h2>
+	<form method="post" action="/news/{{news_id}}/edit">
+		{%csrf_token%}
+		{{news_form.as_p}}
+		<button type="submit">Сохранить</button>
+	</form>
+</body>
+</html>

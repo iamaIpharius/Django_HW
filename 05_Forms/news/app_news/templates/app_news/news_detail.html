@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{news_form.title}}</title>
+</head>
+<body>
+	<h2>{{news.title}}</h2>
+	<p>{{news.content}}</p>
+
+	{% if comments %}
+	<ul>
+		{% for com in comments %}
+			{% if com.user%}
+				<li>
+					<p>{{com.user.username}}</p>
+					<p>{{com.text}}</p>
+				</li>
+			{%else%}
+				<li>
+					<p>{{com.name}} (Аноним)</p>
+					<p>{{com.text}}</p>
+				</li>
+			{%endif%}
+
+		
+		{%endfor%}
+	</ul>
+	{%else%}
+		<p>Комментариев нет</p>
+	{%endif%}
+
+
+
+	{% if request.user.is_authenticated %}
+
+		<form method="post" action="/news/{{news_id}}/">
+		{%csrf_token%}
+		<p>{{request.user}}</p>
+		<p>{{commentary_form.text}}</p>
+
+		<button type="submit">Сохранить</button>
+		</form>
+
+	{% else %}
+		<form method="post" action="/news/{{news_id}}/">
+		{%csrf_token%}
+		<p>{{commentary_form.as_p}}</p>
+
+		<button type="submit">Сохранить</button>
+		</form>
+	{%endif%}
+</body>
+</html>

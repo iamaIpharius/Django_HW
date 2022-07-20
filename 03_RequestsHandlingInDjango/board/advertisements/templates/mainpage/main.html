@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Main</title>
+</head>
+<body>
+	<p>
+		<details>
+			<summary><label>Cathegorys</label></summary>
+			<p>
+				<ul>
+					{% for cat in cathegory %}
+						<li>{{cat}}</li>
+					{% endfor %}
+					
+				</ul>
+			</p>
+		</details>
+	</p>
+	<p>
+		<details>
+			<summary><label>Regions</label></summary>
+			<p>
+				<ul>
+					{% for region in regions %}
+						<li>{{region}}</li>
+					{% endfor %}
+					
+				</ul>
+			</p>
+		</details>
+	</p>
+	<p><input type="text" name="search"></p>
+	<p><button>{{button}}</button></p>
+</body>
+</html>
