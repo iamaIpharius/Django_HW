@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Аккаунт</title>
+</head>
+<body>
+	<h2>Аккаунт</h2>
+	{% if request.user.is_authenticated %}
+		<p>Юзернейм: {{username}}</p>
+		<p>Имя: {{first_name }} {{last_name}}</p>
+	{% else %}
+		<p>{{answer}}</p>
+	{%endif%}
+</body>
+</html>
