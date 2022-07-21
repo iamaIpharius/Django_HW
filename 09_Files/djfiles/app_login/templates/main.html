@@ -8,6 +8,8 @@
 <body>
 	{% if request.user.is_authenticated %}
 		<h3>Добро пожаловать на сайт {{request.user.first_name}}</h3>
+		<p>Birthday: {{request.user.profile.date_of_birth}}</p>
+		<p>City: {{request.user.profile.city}}</p>
 		<a href="{% url 'logout'%}">Выйти</a>
 	{% else %}
 		<h3>Вы не авторизованыб пожалуйста войдите</h3>

@@ -19,6 +19,6 @@ from djfiles.views import MainView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    path('', include('app_login.urls')),
     path('', MainView.as_view()),
 ]

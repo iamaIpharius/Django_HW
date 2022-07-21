@@ -10,6 +10,7 @@
 	{% if request.user.is_authenticated %}
 		<p>Юзернейм: {{username}}</p>
 		<p>Имя: {{first_name }} {{last_name}}</p>
+		<p>О себе: {{about}}</p>
 	{% else %}
 		<p>{{answer}}</p>
 	{%endif%}
