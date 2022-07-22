@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Создать запись</title>
+</head>
+<body>
+	{%if request.user.is_authenticated%}
+		<h1>Создать запись</h1>
+		<form method="post" action="/blog/create/">
+			{% csrf_token %}
+			{{blog_form.as_p}}
+			<button type="submit">Создать</button>
+	{%else%}
+		<h3>Вы не авторизованыб пожалуйста войдите</h3>
+		<a href="{% url 'login'%}">Войти</a>
+	{%endif%}
+
+	</form>
+</body>
+</html>
