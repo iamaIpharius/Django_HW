@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>NEWS</title>
+	<title>BLOG</title>
 </head>
 <body>
 	<h1>Записи</h1>
@@ -13,7 +13,9 @@
 	<ul>
 		{% for blog in blog_list %}
 		<li>
+			<p>{{blog.user.username}}</p>
 			<a href="/blog/{{blog.id}}">{{blog.title}}</a>
+			<p>{{blog.content|truncatechars:100}}</p>
 		</li>
 		{%endfor%}
 	</ul>

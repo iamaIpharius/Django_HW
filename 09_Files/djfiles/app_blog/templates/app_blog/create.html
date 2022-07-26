@@ -8,15 +8,16 @@
 <body>
 	{%if request.user.is_authenticated%}
 		<h1>Создать запись</h1>
-		<form method="post" action="/blog/create/">
+		<form method="post" action="/blog/create/" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{blog_form.as_p}}
 			<button type="submit">Создать</button>
+		</form>
 	{%else%}
 		<h3>Вы не авторизованыб пожалуйста войдите</h3>
 		<a href="{% url 'login'%}">Войти</a>
 	{%endif%}
 
-	</form>
+	
 </body>
 </html>
