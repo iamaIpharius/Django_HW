@@ -131,3 +131,7 @@ dmypy.json
 .pyre/
 pythondjango.sublime-project
 pythondjango.sublime-workspace
+
+
+*.jpg
+*.png

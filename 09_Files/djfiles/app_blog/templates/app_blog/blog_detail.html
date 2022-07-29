@@ -6,8 +6,12 @@
 	<title></title>
 </head>
 <body>
-	<h2>{{blog_detail.title}}</h2>
-	<p>{{blog_detail.content}}</p>
-	<img src="{{blog_detail.image.url}}" alt="connect" style="max-height: 300px">
+	<h2>{{title}}</h2>
+	<p>{{content}}</p>
+	{% if images %}
+		{%for image in images%}
+			<img src="{{image.image.url}}" alt="connect" style="max-height: 300px">
+		{%endfor%}
+	{%endif%}
 </body>
 </html>

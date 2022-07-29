@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import BlogEntry
+from .models import BlogEntry, Image
 from django.views import View
 from .forms import BlogForm, UploadForm
 from django.core.exceptions import PermissionDenied
@@ -14,10 +14,19 @@ class BlogListView(ListView):
     context_object_name = 'blog_list'
 
 
-class BlogDeatailView(DetailView):
-    model = BlogEntry
-    template_name = "app_blog/blog_detail.html"
-    context_object_name = 'blog_detail'
+class BlogDeatailView(View):
+    def get(self, request, blogentry_id):
+        blog = BlogEntry.objects.get(id=blogentry_id)
+        title = blog.title
+        content = blog.content
+        images = blog.image_set.all()
+        return render(request, 'app_blog/blog_detail.html', context={'title': title, 'content': content, 'images': images})
+
+
+
+    # model = BlogEntry
+    # template_name = "app_blog/blog_detail.html"
+    # context_object_name = 'blog_detail'
 
 
 class BlogFormView(View):
@@ -30,10 +39,12 @@ class BlogFormView(View):
     def post(self, request):
 
         blog_form = BlogForm(request.POST, request.FILES)
-
         if blog_form.is_valid():
-            BlogEntry.objects.create(
+            new_blog = BlogEntry.objects.create(
                 user=request.user, **blog_form.cleaned_data)
+            images = request.FILES.getlist('image')
+            for i in images:
+                Image.objects.create(image=i, blog=new_blog)
             return HttpResponseRedirect('/blog')
         return render(request, 'app_blog/create.html', context={'blog_form': blog_form})
 
@@ -47,7 +58,6 @@ def upload_posts(request):
             posts_str = posts_file.decode('utf-8').split('\n')
             csv_reader = reader(posts_str, delimiter=',', quotechar='"')
             for row in csv_reader:
-                print(row[1])
                 BlogEntry.objects.create(
                     user=request.user, title=row[0], content=row[1])
             return HttpResponse(content='Посты загружены', status=200)
