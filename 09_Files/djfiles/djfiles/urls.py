@@ -20,6 +20,6 @@ from djfiles.views import MainView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_login.urls')),
-    path('', MainView.as_view()),
+    path('', MainView.as_view(), name='main'),
     path('', include('app_blog.urls')),
 ]
