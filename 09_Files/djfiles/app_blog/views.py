@@ -54,7 +54,7 @@ def upload_posts(request):
         upload_file_form = UploadForm(request.POST, request.FILES)
         if upload_file_form.is_valid():
             print(upload_file_form.cleaned_data)
-            posts_file = upload_file_form.cleaned_data['fire'].read()
+            posts_file = upload_file_form.cleaned_data['file'].read()
             posts_str = posts_file.decode('utf-8').split('\n')
             csv_reader = reader(posts_str, delimiter=',', quotechar='"')
             for row in csv_reader:

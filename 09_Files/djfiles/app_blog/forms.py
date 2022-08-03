@@ -10,4 +10,4 @@ class BlogForm(forms.Form):
 
 
 class UploadForm(forms.Form):
-    fire = forms.FileField()
+    file = forms.FileField()
