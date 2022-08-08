@@ -41,7 +41,7 @@ class BlogTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'app_blog/create.html')
 
-        create = c.post('/blog/create/', title='something', content='somethingsomething', follow=True)
+        create = c.post(url, title='something', content='somethingsomething', follow=True)
         self.assertEqual(create.status_code, 200)
 
     def test_blog_upload(self):
@@ -51,5 +51,14 @@ class BlogTest(TestCase):
         self.assertTemplateUsed(response, 'app_blog/upload.html')
 
         file = SimpleUploadedFile('blogs.csv', b'file_content', content_type='csv')
-        upload = c.post('blog/upload/', {'file': file})
+        upload = c.post(url, {'file': file})
         self.assertEqual(upload.status_code, 200)
+
+    def test_blog_create_with_images(self):
+        url = reverse('create')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'app_blog/create.html')
+
+        create = c.post(url, title='something', content='somethingsomething', image='media/blog_images/cat.jpg', follow=True)
+        self.assertEqual(create.status_code, 200)
