@@ -1,18 +1,22 @@
+{% extends 'app_blog/blog_base.html' %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Аккаунт</title>
+	<title>{%trans "Account"%}</title>
 </head>
 <body>
-	<h2>Аккаунт</h2>
+{% block content %}
+	<h2>{%trans "Account"%}</h2>
 	{% if request.user.is_authenticated %}
-		<p>Юзернейм: {{username}}</p>
-		<p>Имя: {{first_name }} {{last_name}}</p>
-		<p>О себе: {{about}}</p>
+		<p>{%trans "Username:"%} {{username}}</p>
+		<p>{%trans "Name:"%} {{first_name }} {{last_name}}</p>
+		<p>{%trans "About:"%} {{about}}</p>
 	{% else %}
-		<p>{{answer}}</p>
+		<p>{%trans "You're not authorized"%}</p>
 	{%endif%}
+{% endblock %}
 </body>
 </html>

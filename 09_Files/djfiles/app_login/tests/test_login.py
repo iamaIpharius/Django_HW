@@ -49,14 +49,12 @@ class AppLoginTest(TestCase):
         c.force_login(pongo)
         response = c.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Добро пожаловать на сайт')
 
     def test_logout_page(self):
         url = reverse('logout')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'app_login/logout.html')
-        self.assertContains(response, 'Вы вышли из учетной записи')
 
     def test_account_page(self):
         url = reverse('account')

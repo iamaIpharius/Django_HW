@@ -1,23 +1,26 @@
+{% extends 'app_blog/blog_base.html' %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Создать запись</title>
+	<title>{% trans "Make note"%}</title>
 </head>
 <body>
+{% block content %}
 	{%if request.user.is_authenticated%}
-		<h1>Создать запись</h1>
+		<h1>{% trans "Make note" %}</h1>
 		<form method="post" action="/blog/create/" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{blog_form.as_p}}
-			<button type="submit">Создать</button>
+			<button type="submit">{% trans "Make note" %}</button>
 		</form>
 	{%else%}
-		<h3>Вы не авторизованыб пожалуйста войдите</h3>
-		<a href="{% url 'login'%}">Войти</a>
+		<h3>{% trans "You're not authorized please login" %}</h3>
+		<a href="{% url 'login'%}">{% trans "Login" %}</a>
 	{%endif%}
-
+{% endblock %}
 	
 </body>
 </html>

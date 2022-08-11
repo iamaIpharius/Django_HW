@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-11 12:10+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\app_blog\apps.py:8
+msgid "blogs"
+msgstr "блоги"
+
+#: .\app_blog\models.py:7
+msgid "title"
+msgstr "название"
+
+#: .\app_blog\models.py:8
+msgid "content"
+msgstr "содержимое"
+
+#: .\app_blog\models.py:9
+msgid "created at"
+msgstr "создано"
+
+#: .\app_blog\models.py:10
+msgid "date"
+msgstr "дата"
+
+#: .\app_blog\models.py:11
+msgid "uploaded at"
+msgstr "загружено"
+
+#: .\app_blog\models.py:13
+msgid "user"
+msgstr "пользователь"
+
+#: .\app_blog\models.py:17
+msgid "blog entry"
+msgstr "запись блога"
+
+#: .\app_blog\models.py:18
+msgid "blog entry's"
+msgstr "записи блога"
+
+#: .\app_blog\models.py:25 .\app_blog\models.py:30
+msgid "image"
+msgstr "изображение"
+
+#: .\app_blog\models.py:26
+msgid "blog"
+msgstr "блог"
+
+#: .\app_blog\models.py:29
+msgid "images"
+msgstr "изображения"
+
+#: .\app_blog\templates\app_blog\blog_list.html:8
+msgid "BLOG"
+msgstr "БЛОГ"
+
+#: .\app_blog\templates\app_blog\blog_list.html:12
+msgid "Notes"
+msgstr "Записи"
+
+#: .\app_blog\templates\app_blog\blog_list.html:26
+msgid "No notes"
+msgstr "Записей нет"
+
+#: .\app_blog\templates\app_blog\create.html:8
+#: .\app_blog\templates\app_blog\create.html:13
+#: .\app_blog\templates\app_blog\create.html:17
+msgid "Make note"
+msgstr "Создать запись"
+
+#: .\app_blog\templates\app_blog\create.html:20
+#: .\app_login\templates\main.html:18
+msgid "You're not authorized please login"
+msgstr "Вы не авторизованы, пожалуйста войдите"
+
+#: .\app_blog\templates\app_blog\create.html:21
+#: .\app_login\templates\app_login\login.html:8
+#: .\app_login\templates\app_login\login.html:16
+#: .\app_login\templates\app_login\logout.html:13
+#: .\app_login\templates\main.html:19
+msgid "Login"
+msgstr "Войти"
+
+#: .\app_blog\templates\app_blog\upload.html:8
+msgid "Mass upload"
+msgstr "Массовая загрузка"
+
+#: .\app_blog\templates\app_blog\upload.html:15
+msgid "Upload"
+msgstr "Загрузить"
+
+#: .\app_login\templates\app_login\account.html:8
+#: .\app_login\templates\app_login\account.html:12
+msgid "Account"
+msgstr "Аккаунт"
+
+#: .\app_login\templates\app_login\account.html:14
+msgid "Username:"
+msgstr "Юзернейм"
+
+#: .\app_login\templates\app_login\account.html:15
+msgid "Name:"
+msgstr "Имя"
+
+#: .\app_login\templates\app_login\account.html:16
+msgid "About:"
+msgstr "О себе"
+
+#: .\app_login\templates\app_login\account.html:18
+msgid "You're not authorized"
+msgstr "Вы не авторизованы"
+
+#: .\app_login\templates\app_login\edit.html:8
+#: .\app_login\templates\app_login\edit.html:12
+msgid "Change Account"
+msgstr "Изменить аккаунт"
+
+#: .\app_login\templates\app_login\edit.html:16
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\app_login\templates\app_login\logout.html:8
+#: .\app_login\templates\main.html:16
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\app_login\templates\app_login\logout.html:12
+msgid "You're log out"
+msgstr "Вы вышли из аккаунта"
+
+#: .\app_login\templates\app_login\register.html:8
+#: .\app_login\templates\app_login\register.html:12
+msgid "Registration"
+msgstr "Регистрация"
+
+#: .\app_login\templates\app_login\register.html:16
+msgid " Make Registration"
+msgstr "Зарегистрироваться"
+
+#: .\app_login\templates\main.html:8
+msgid "Main"
+msgstr "Главная"
+
+#: .\app_login\templates\main.html:13
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: .\app_login\templates\main.html:14
+msgid "Birthday:"
+msgstr "День рождения:"
+
+#: .\app_login\templates\main.html:15
+msgid "City:"
+msgstr "Город:"
+
+#: .\app_login\templates\main.html:21
+msgid "MAIN PAGE"
+msgstr "ГЛАВНАЯ СТРАНИЦА"

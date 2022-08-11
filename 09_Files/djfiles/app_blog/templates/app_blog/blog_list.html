@@ -1,12 +1,15 @@
+{% extends 'app_blog/blog_base.html' %}
+{% load i18n %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>BLOG</title>
+	<title>{% trans "BLOG" %}</title>
 </head>
 <body>
-	<h1>Записи</h1>
+{% block content %}
+	<h1>{% trans "Notes" %}</h1>
 
 
 	{% if blog_list %}
@@ -20,7 +23,8 @@
 		{%endfor%}
 	</ul>
 	{%else%}
-		<p>Записей нет</p>
+		<p>{% trans "No notes" %}</p>
 	{%endif%}
+{% endblock %}
 </body>
 </html>
