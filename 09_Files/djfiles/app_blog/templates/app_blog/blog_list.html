@@ -1,0 +1,30 @@
+{% extends 'app_blog/blog_base.html' %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% trans "BLOG" %}</title>
+</head>
+<body>
+{% block content %}
+	<h1>{% trans "Notes" %}</h1>
+
+
+	{% if blog_list %}
+	<ul>
+		{% for blog in blog_list %}
+		<li>
+			<p>{{blog.user.username}}</p>
+			<a href="/blog/{{blog.id}}">{{blog.title}}</a>
+			<p>{{blog.content|truncatechars:100}}</p>
+		</li>
+		{%endfor%}
+	</ul>
+	{%else%}
+		<p>{% trans "No notes" %}</p>
+	{%endif%}
+{% endblock %}
+</body>
+</html>
