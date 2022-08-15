@@ -1,0 +1,29 @@
+{% extends 'app_login/base.html' %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% trans "Shops" %}</title>
+</head>
+<body>
+{% block content %}
+	<h1>{% trans "Shops" %}</h1>
+
+
+	{% if shops_list %}
+	<ul>
+		{% for shop in shops_list %}
+		<li>
+			<p>{{shop.name}}</p>
+            <p>{{shop.category}}</p>
+		</li>
+		{%endfor%}
+	</ul>
+	{%else%}
+		<p>{% trans "No shops" %}</p>
+	{%endif%}
+{% endblock %}
+</body>
+</html>

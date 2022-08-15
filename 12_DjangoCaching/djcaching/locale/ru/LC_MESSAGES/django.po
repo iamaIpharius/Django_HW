@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-12 17:54+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\app_login\models.py:6
+msgid "user"
+msgstr "пользователь"
+
+#: .\app_login\models.py:7
+msgid "balance"
+msgstr "баланс"
+
+#: .\app_login\models.py:8
+msgid "sales"
+msgstr "акции"
+
+#: .\app_login\templates\app_login\account.html:8
+#: .\app_login\templates\app_login\account.html:12
+msgid "Account"
+msgstr "Аккаунт"
+
+#: .\app_login\templates\app_login\account.html:14
+msgid "Username:"
+msgstr "Юзернейм"
+
+#: .\app_login\templates\app_login\account.html:15
+msgid "Name:"
+msgstr "Имя:"
+
+#: .\app_login\templates\app_login\account.html:16
+msgid "Balance:"
+msgstr "Баланс:"
+
+#: .\app_login\templates\app_login\account.html:17
+msgid "Sales:"
+msgstr "Акции:"
+
+#: .\app_login\templates\app_login\account.html:18
+msgid "Proposals:"
+msgstr "Предложения:"
+
+#: .\app_login\templates\app_login\account.html:19
+msgid "History:"
+msgstr "История:"
+
+#: .\app_login\templates\app_login\account.html:21 .\app_login\views.py:51
+#: .\app_login\views.py:71
+msgid "You're not authorized"
+msgstr "Вы не авторизованы"
+
+#: .\app_login\templates\app_login\edit.html:8
+#: .\app_login\templates\app_login\edit.html:12
+msgid "Change Account"
+msgstr "Изменить аккаунт"
+
+#: .\app_login\templates\app_login\edit.html:16
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\app_login\templates\app_login\login.html:8
+#: .\app_login\templates\app_login\login.html:16
+#: .\app_login\templates\app_login\logout.html:13
+#: .\app_login\templates\main.html:17
+msgid "Login"
+msgstr "Войти"
+
+#: .\app_login\templates\app_login\logout.html:8
+#: .\app_login\templates\main.html:14
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\app_login\templates\app_login\logout.html:12
+msgid "You're log out"
+msgstr "Вы вышли из аккаунта"
+
+#: .\app_login\templates\app_login\register.html:8
+#: .\app_login\templates\app_login\register.html:12
+msgid "Registration"
+msgstr "Регистрация"
+
+#: .\app_login\templates\app_login\register.html:16
+msgid " Make Registration"
+msgstr "Зарегистрироваться"
+
+#: .\app_login\templates\main.html:8
+msgid "Main"
+msgstr "Главная"
+
+#: .\app_login\templates\main.html:13
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: .\app_login\templates\main.html:16
+msgid "You're not authorized please login"
+msgstr "Вы не авторизованы, пожалуйста залогиньтесь"
+
+#: .\app_login\templates\main.html:19
+msgid "MAIN PAGE"
+msgstr "ГЛАВНАЯ СТРАНИЦА"
+
+#: .\shops\models.py:6
+msgid "name"
+msgstr "название"
+
+#: .\shops\models.py:7
+msgid "category"
+msgstr "категория"
+
+#: .\shops\models.py:10
+msgid "shops"
+msgstr "магазины"
+
+#: .\shops\models.py:11
+msgid "shop"
+msgstr "магазин"
+
+#: .\shops\templates\shops\shops_list.html:8
+#: .\shops\templates\shops\shops_list.html:12
+msgid "Shops"
+msgstr "Магазины"
+
+#: .\shops\templates\shops\shops_list.html:25
+msgid "No shops"
+msgstr "Магазинов нет"

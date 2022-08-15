@@ -1,0 +1,21 @@
+{% extends 'app_login/base.html' %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{%trans "Change Account"%}</title>
+</head>
+<body>
+{% block content %}
+	<h2>{%trans "Change Account"%}</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit">{%trans "Save"%}</button>
+
+	</form>
+{% endblock %}
+</body>
+</html>
