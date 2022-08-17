@@ -1,0 +1,22 @@
+{% extends 'app_login/base.html' %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{%trans "Main"%}</title>
+</head>
+<body>
+	{% block content %}
+		{% if request.user.is_authenticated %}
+			<h3>{%trans "Welcome"%} {{request.user.first_name}}</h3>
+			<a href="{% url 'logout'%}">{%trans "Logout"%}</a>
+		{% else %}
+			<h3>{%trans "You're not authorized please login"%}</h3>
+			<a href="{% url 'login'%}">{% trans "Login" %}</a>
+		{%endif%}
+		<h2>{%trans "MAIN PAGE"%}</h2>
+	{% endblock %}
+</body>
+</html>
