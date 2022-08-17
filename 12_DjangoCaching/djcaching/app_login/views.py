@@ -43,11 +43,8 @@ def account_view(request):
         sales = request.user.profile.sales
         proposals = request.user.profile.proposals
 
-        user_account_cache_data = {
-            sales_cache_key: sales,
-            proposals_cache_key: proposals,
-        }
-        cache.set_many(user_account_cache_data)
+        cache.get_or_set(sales_cache_key, sales, 30*60)
+        cache.get_or_set(proposals_cache_key, proposals, 30 * 60)
 
         balance = request.user.profile.balance
 
